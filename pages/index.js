@@ -1,7 +1,8 @@
 import React from 'react'
 import moment from 'moment'
 import Head from 'next/head'
-import { LocaleProvider, Radio, Calendar, Slider } from 'antd'
+import Link from 'next/link'
+import { LocaleProvider, Radio, Calendar, Slider, Icon } from 'antd'
 
 import enUS from 'antd/lib/locale-provider/en_US'
 import frFR from 'antd/lib/locale-provider/fr_FR'
@@ -25,7 +26,7 @@ export default class extends React.Component {
 
   render () {
     return (
-      <div style={{ paddingTop: 80, textAlign: "center" }}>
+      <div style={{ paddingTop: 30, textAlign: "center" }}>
         <Head>
           <title>Next.js with Ant Design</title>
           <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/antd/2.9.3/antd.min.css' />
@@ -39,13 +40,17 @@ export default class extends React.Component {
 
         <LocaleProvider locale={this.state.locale}>
             <div>
-              <div style={{ width: 320, border: '1px solid #d9d9d9', borderRadius: 4, margin: '100px auto 0', opacity: this.state.calendarOpacity }}>
+              <div style={{ width: 320, border: '1px solid #d9d9d9', borderRadius: 4, margin: '20px auto 0', opacity: this.state.calendarOpacity }}>
                 <Calendar fullscreen={false} value={moment()} />
               </div>
-              <h3 style={{ marginTop: 80 }}>Calendar Opacity</h3>
+              <h3 style={{ marginTop: 30 }}>Calendar Opacity</h3>
               <Slider onChange={this.onSliderChange} style={{ width: 320, margin: '0 auto' }} />
             </div>
         </LocaleProvider>
+
+        <Link href="/universal">
+          <Icon type="right-square-o"  style={{ fontSize: 20, cursor: 'pointer', marginTop: 30 }}>Universal</Icon>
+        </Link>
       </div>
     )
   }
